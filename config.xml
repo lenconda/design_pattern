@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <config>
-    <className>FileOutput</className>
-    <className>Linux</className>
-    <className>JavaScript</className>
+    <className>ConsoleOutput</className>
+    <className>MacOS</className>
+    <className>Kotlin</className>
+    <proxy>Picture</proxy>
+    <coffee>WithoutMilk</coffee>
+    <coffee>MiddleCup</coffee>
 </config>
