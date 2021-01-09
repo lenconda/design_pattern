@@ -1,9 +1,11 @@
 package top.lenconda.design_pattern.market.user;
 
+import top.lenconda.design_pattern.market.department.Department;
+
 import java.util.Date;
 
 public class UserFactory {
-    public User createUser(String name, String username, String password, String role, String department) {
+    public User createUser(String name, String username, String password, String role, Department department) {
         User user;
 
         if (role.equals("stuff")) {
