@@ -7,7 +7,7 @@ public class Secondary extends Role {
         this.grade = "Secondary";
     }
 
-    public void checkRole(int score) {
+    public void checkRole() {
         if (point >= 5000) {
             player.setRole(new Final(this));
         } else if (point >= 1000 && point < 5000) {

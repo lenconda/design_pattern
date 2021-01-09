@@ -5,15 +5,15 @@ public abstract class Role {
     protected int point; // 剩余积分分数
     protected String grade; // 游戏账户等级
 
-    public abstract void checkRole(int score);
+    public abstract void checkRole();
 
     public void play(int score, String result) {
         if (result.equals("win")) {
             this.point += score;
-            checkRole(score);
+            checkRole();
         } else if (result.equals("lose")) {
             this.point -= score;
-            checkRole(score);
+            checkRole();
         }
 
         System.out.println("Points remaining: " + this.point + ", current grade：" + player.getRole().grade);
@@ -22,10 +22,10 @@ public abstract class Role {
     public void doubleScore(int score, String result) {
         if (result.equals("win")) {
             this.point += 2 * score;
-            checkRole(score);
+            checkRole();
         } else if (result.equals("lose")) {
             this.point -= score;
-            checkRole(score);
+            checkRole();
         }
 
         System.out.println("Points remaining: " + this.point + ", current grade：" + player.getRole().grade);

@@ -7,7 +7,7 @@ public class Professional extends Role {
         this.grade = "Professional";
     }
 
-    public void checkRole(int score) {
+    public void checkRole() {
         if (point >= 5000) {
             player.setRole(new Final(this));
         } else if (point < 1000 && point >= 100) {
