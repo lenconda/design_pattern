@@ -5,6 +5,10 @@ import top.lenconda.design_pattern.market.user.User;
 import java.util.ArrayList;
 
 public class HRRequest extends Request {
+    public HRRequest(User creator) {
+        super(creator);
+    }
+
     public String action;
     public User targetUser;
     public ArrayList<User> users;

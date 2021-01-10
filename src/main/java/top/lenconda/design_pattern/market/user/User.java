@@ -3,14 +3,20 @@ package top.lenconda.design_pattern.market.user;
 import top.lenconda.design_pattern.market.department.Department;
 import top.lenconda.design_pattern.market.request.Request;
 
-import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Date;
 
 public abstract class User {
     public String username;
     public String name;
     public String password;
+    public int gender;
+    public Date birthday;
+    public Date joinDate;
+    public String phone;
+    public String qq;
+    public String wechat;
+    public String address;
+    public Department department;
 
     public String getUsername() {
         return username;
@@ -107,15 +113,6 @@ public abstract class User {
     public void setHrRequestSuccessor(User hrRequestSuccessor) {
         this.hrRequestSuccessor = hrRequestSuccessor;
     }
-
-    public int gender;
-    public Date birthday;
-    public Date joinDate;
-    public String phone;
-    public String qq;
-    public String wechat;
-    public String address;
-    public Department department;
 
     protected User hrRequestSuccessor;
 

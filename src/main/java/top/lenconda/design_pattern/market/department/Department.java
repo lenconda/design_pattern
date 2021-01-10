@@ -2,8 +2,24 @@ package top.lenconda.design_pattern.market.department;
 
 import java.util.Date;
 
-public abstract class Department {
-    public String id;
-    public String name;
-    public Date createdDate;
+public class Department {
+    private String id;
+    private String name;
+    private Date createdDate;
+
+    public Department() {
+        this.createdDate = new Date();
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public Date getCreatedDate() {
+        return createdDate;
+    }
 }
