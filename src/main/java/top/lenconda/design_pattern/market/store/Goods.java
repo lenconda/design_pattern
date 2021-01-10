@@ -1,5 +1,7 @@
 package top.lenconda.design_pattern.market.store;
 
+import top.lenconda.design_pattern.market.request.Request;
+import top.lenconda.design_pattern.market.request.SupplyRequest;
 import top.lenconda.design_pattern.market.user.Manager;
 import top.lenconda.design_pattern.market.user.User;
 
@@ -143,7 +145,13 @@ public class Goods {
             System.out.println("You have no permission to sale this goods");
             return;
         }
-        this.quantity = quantity;
+        this.quantity = this.quantity - quantity;
+        if (this.quantity < 10) {
+            SupplyRequest request = new SupplyRequest(operator);
+            request.setGoods(this);
+            request.setQuantity(100);
+            operator.request(request);
+        }
     }
 
     public void add(int quantity, User operator) {

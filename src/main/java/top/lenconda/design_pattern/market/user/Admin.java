@@ -1,9 +1,14 @@
 package top.lenconda.design_pattern.market.user;
 
+import top.lenconda.design_pattern.market.request.Request;
+
 public class Admin extends User {
     public Admin(String name, String username, String password, String role) {
         super(name, username, password, role);
     }
 
-//    public User createDepartmentManager() {}
+    @Override
+    public void request(Request request) {
+
+    }
 }
