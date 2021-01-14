@@ -1,12 +1,19 @@
 package top.lenconda.design_pattern.market.user;
 
+import top.lenconda.design_pattern.market.department.Department;
+
 public class Stuff extends User {
-    public Stuff(String name, String username, String password, String role) {
-        super(name, username, password, role);
+    public Stuff(String name, String username, String password, Department department) {
+        super(name, username, password, department);
     }
 
     @Override
     public void addStuff(User stuff) {
+        System.out.println("Stuff cannot add stuff");
+    }
+
+    @Override
+    public void addStuff(User stuff, Department department) {
         System.out.println("Stuff cannot add stuff");
     }
 

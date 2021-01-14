@@ -11,19 +11,19 @@ public class UserFactory {
         if (role.equals("stuff")) {
             switch (department.getId()) {
                 case "hr":
-                    user = new HRStuff(name, username, password, role);
+                    user = new HRStuff(name, username, password, department);
                     break;
                 case "it":
-                    user = new ITStuff(name, username, password, role);
+                    user = new ITStuff(name, username, password, department);
                     break;
                 case "office":
-                    user = new OfficeStuff(name, username, password, role);
+                    user = new OfficeStuff(name, username, password, department);
                     break;
                 case "operation":
-                    user = new OperationStuff(name, username, password, role);
+                    user = new OperationStuff(name, username, password, department);
                     break;
                 case "sales":
-                    user = new SalesStuff(name, username, password, role);
+                    user = new SalesStuff(name, username, password, department);
                     break;
                 default:
                     System.out.println("No department matched");
@@ -32,19 +32,22 @@ public class UserFactory {
         } else if (role.equals("manager")) {
             switch (department.getId()) {
                 case "hr":
-                    user = new HRManager(name, username, password, role);
+                    user = new HRManager(name, username, password, department);
                     break;
                 case "it":
-                    user = new ITManager(name, username, password, role);
+                    user = new ITManager(name, username, password, department);
                     break;
                 case "office":
-                    user = new OfficeManager(name, username, password, role);
+                    user = new OfficeManager(name, username, password, department);
                     break;
                 case "operation":
-                    user = new OperationManager(name, username, password, role);
+                    user = new OperationManager(name, username, password, department);
                     break;
                 case "sales":
-                    user = new SalesManager(name, username, password, role);
+                    user = new SalesManager(name, username, password, department);
+                    break;
+                case "ceo":
+                    user = new CEO(name, username, password, department);
                     break;
                 default:
                     System.out.println("No role matched");

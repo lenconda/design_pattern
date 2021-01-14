@@ -8,16 +8,16 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public abstract class User {
-    public String username;
-    public String name;
-    public String password;
-    public int gender;
-    public Date birthday;
-    public Date joinDate;
-    public String phone;
-    public String qq;
-    public String wechat;
-    public String address;
+    public String username = "";
+    public String name = "";
+    public String password = "";
+    public int gender = 0;
+    public Date birthday = new Date();
+    public Date joinDate = new Date();
+    public String phone = "";
+    public String qq = "";
+    public String wechat = "";
+    public String address = "";
     public Department department;
 
     public User getSuperior() {
@@ -142,8 +142,11 @@ public abstract class User {
     }
 
 
-    public User(String name, String username, String password, String role) {
+    public User(String name, String username, String password, Department department) {
         this.name = name;
+        this.username = username;
+        this.password = password;
+        this.department = department;
     }
 
     public String toString() {
@@ -195,6 +198,7 @@ public abstract class User {
 
     // 组合模式添加员工，形成树形结构
     public abstract void addStuff(User stuff);
+    public abstract void addStuff(User stuff, Department department);
     public abstract void removeStuff(User stuff);
     public abstract User getStuffByIndex(int index);
 }

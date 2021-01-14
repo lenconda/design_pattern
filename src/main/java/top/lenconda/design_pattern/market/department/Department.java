@@ -11,7 +11,7 @@ public class Department implements DepartmentGroup {
     private String id;
     private String name;
     private final Date createdDate;
-    private ArrayList<User> members;
+    private ArrayList<User> members = new ArrayList<>();
 
     public Department() {
         this.createdDate = new Date();
