@@ -6,20 +6,57 @@ import java.util.Date;
 
 public class UserFactory {
     public User createUser(String name, String username, String password, String role, Department department) {
-        User user;
+        User user = null;
 
         if (role.equals("stuff")) {
-            if (department.equals("hr")) {
-                user = new HRStuff(name, username, password, role);
-            } else {
-                user = new Stuff(name, username, password, role);
+            switch (department.getId()) {
+                case "hr":
+                    user = new HRStuff(name, username, password, role);
+                    break;
+                case "it":
+                    user = new ITStuff(name, username, password, role);
+                    break;
+                case "office":
+                    user = new OfficeStuff(name, username, password, role);
+                    break;
+                case "operation":
+                    user = new OperationStuff(name, username, password, role);
+                    break;
+                case "sales":
+                    user = new SalesStuff(name, username, password, role);
+                    break;
+                default:
+                    System.out.println("No department matched");
+                    break;
             }
-        } else {
-            user = new Stuff(name, username, password, role);
+        } else if (role.equals("manager")) {
+            switch (department.getId()) {
+                case "hr":
+                    user = new HRManager(name, username, password, role);
+                    break;
+                case "it":
+                    user = new ITManager(name, username, password, role);
+                    break;
+                case "office":
+                    user = new OfficeManager(name, username, password, role);
+                    break;
+                case "operation":
+                    user = new OperationManager(name, username, password, role);
+                    break;
+                case "sales":
+                    user = new SalesManager(name, username, password, role);
+                    break;
+                default:
+                    System.out.println("No role matched");
+                    break;
+            }
         }
 
-        user.joinDate = new Date();
-
-        return user;
+        if (user != null) {
+            user.joinDate = new Date();
+            return user;
+        } else {
+            return null;
+        }
     }
 }

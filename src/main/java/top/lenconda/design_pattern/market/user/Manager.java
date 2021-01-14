@@ -6,7 +6,7 @@ import top.lenconda.design_pattern.market.store.GoodsCategory;
 import java.util.ArrayList;
 import java.util.Date;
 
-public abstract class Manager extends User {
+public class Manager extends User {
     public Manager(String name, String username, String password, String role) {
         super(name, username, password, role);
     }
@@ -38,6 +38,24 @@ public abstract class Manager extends User {
             System.out.println("You do not have permission to update this category");
             return;
         }
+    }
 
+    @Override
+    public void addStuff(User stuff) {
+        stuff.setSuperior(this);
+        stuff.setDepartment(this.department);
+        this.stuffs.add(stuff);
+    }
+
+    @Override
+    public void removeStuff(User stuff) {
+        this.stuffs.remove(stuff);
+        stuff.setSuperior(null);
+        stuff.setDepartment(null);
+    }
+
+    @Override
+    public User getStuffByIndex(int index) {
+        return this.stuffs.get(index);
     }
 }

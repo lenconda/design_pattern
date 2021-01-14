@@ -4,6 +4,7 @@ import top.lenconda.design_pattern.market.department.Department;
 import top.lenconda.design_pattern.market.request.*;
 import top.lenconda.design_pattern.market.transaction.Transaction;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 public abstract class User {
@@ -18,6 +19,25 @@ public abstract class User {
     public String wechat;
     public String address;
     public Department department;
+
+    public User getSuperior() {
+        return superior;
+    }
+
+    public void setSuperior(User superior) {
+        this.superior = superior;
+    }
+
+    public ArrayList<User> getStuffs() {
+        return stuffs;
+    }
+
+    public void setStuffs(ArrayList<User> stuffs) {
+        this.stuffs = stuffs;
+    }
+
+    public User superior;
+    public ArrayList<User> stuffs = new ArrayList<>();
 
     protected User hrRequestSuccessor;
     protected User holidayRequestSuccessor;
@@ -172,4 +192,9 @@ public abstract class User {
         }
         return clone;
     }
+
+    // 组合模式添加员工，形成树形结构
+    public abstract void addStuff(User stuff);
+    public abstract void removeStuff(User stuff);
+    public abstract User getStuffByIndex(int index);
 }

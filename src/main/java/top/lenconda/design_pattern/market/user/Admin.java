@@ -11,4 +11,19 @@ public class Admin extends User {
     public void request(Request request) {
 
     }
+
+    @Override
+    public void addStuff(User stuff) {
+
+    }
+
+    @Override
+    public void removeStuff(User stuff) {
+
+    }
+
+    @Override
+    public User getStuffByIndex(int index) {
+        return null;
+    }
 }
