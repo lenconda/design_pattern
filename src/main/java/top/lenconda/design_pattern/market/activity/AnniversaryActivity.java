@@ -7,11 +7,11 @@ import java.util.ArrayList;
 public class AnniversaryActivity extends Activity {
     public AnniversaryActivity() {
         this.setDepartmentGroup(new ArrayList<DepartmentGroup>() {{
-            new HRDepartment();
-            new ITDepartment();
-            new OfficeDepartment();
-            new OperationDepartment();
-            new SalesDepartment();
+            add(new HRDepartment());
+            add(new ITDepartment());
+            add(new OfficeDepartment());
+            add(new OperationDepartment());
+            add(new SalesDepartment());
         }});
     }
 

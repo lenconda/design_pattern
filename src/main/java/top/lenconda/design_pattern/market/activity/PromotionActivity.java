@@ -7,8 +7,8 @@ import java.util.ArrayList;
 public class PromotionActivity extends Activity {
     public PromotionActivity() {
         this.setDepartmentGroup(new ArrayList<DepartmentGroup>() {{
-            new OperationDepartment();
-            new SalesDepartment();
+            add(new OperationDepartment());
+            add(new SalesDepartment());
         }});
     }
 

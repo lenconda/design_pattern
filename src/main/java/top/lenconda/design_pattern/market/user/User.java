@@ -7,7 +7,7 @@ import top.lenconda.design_pattern.market.transaction.Transaction;
 import java.util.ArrayList;
 import java.util.Date;
 
-public abstract class User {
+public abstract class User implements Cloneable {
     public String username = "";
     public String name = "";
     public String password = "";
@@ -44,6 +44,7 @@ public abstract class User {
     protected User holdMeetingRequestSuccessor;
     protected User meetingRoomRequestSuccessor;
     protected User officeSuppliesRequestSuccessor;
+    protected User logisticsSupportRequestSuccessor;
 
     public String getUsername() {
         return username;
@@ -141,6 +142,13 @@ public abstract class User {
         this.hrRequestSuccessor = hrRequestSuccessor;
     }
 
+    public User getLogisticsSupportRequestSuccessor() {
+        return logisticsSupportRequestSuccessor;
+    }
+
+    public void setLogisticsSupportRequestSuccessor(User logisticsSupportRequestSuccessor) {
+        this.logisticsSupportRequestSuccessor = logisticsSupportRequestSuccessor;
+    }
 
     public User(String name, String username, String password, Department department) {
         this.name = name;
@@ -179,11 +187,18 @@ public abstract class User {
                 hrRequest.users.add(hrRequest.targetUser);
                 System.out.println("HR Manager: Approved HR request id " + hrRequest.id + ": " + hrRequest.action + " user " + hrRequest.targetUser.name + "(" + hrRequest.targetUser.username + ")");
             }
+        } else if (request instanceof SupplyRequest) {
+            if (this.logisticsSupportRequestSuccessor != null) {
+                this.logisticsSupportRequestSuccessor.request(request);
+            } else {
+                SupplyRequest supplyRequest = (SupplyRequest) request;
+                System.out.println("Logistics Manager: Approved logistics request id " + supplyRequest.id + ": add " + supplyRequest.quantity + " for " + supplyRequest.goods.getName());
+            }
         }
     }
 
     public void approveTransaction(Transaction transaction) {
-        System.out.println(this.department.getName() + (this instanceof Manager ? "Manager" : "Stuff") + ": Approved " + transaction.getInvoker().getName() + "'s " + transaction.getName() + " transaction");
+        System.out.println(this.department.getId() + (this instanceof Manager ? " manager" : " stuff") + ": Approved " + transaction.getInvoker().getName() + "'s " + transaction.getName() + " transaction");
     }
 
     public User clone() {

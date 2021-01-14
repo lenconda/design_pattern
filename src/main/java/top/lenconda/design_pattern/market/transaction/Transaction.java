@@ -6,12 +6,13 @@ import java.util.ArrayList;
 
 public abstract class Transaction {
     public Transaction(User invoker, String name) {
-
+        this.invoker = invoker;
+        this.name = name;
     }
 
     protected String name;
     protected User invoker;
-    protected ArrayList<User> receivers;
+    protected ArrayList<User> receivers = new ArrayList<>();
 
     public ArrayList<User> getReceivers() {
         return receivers;

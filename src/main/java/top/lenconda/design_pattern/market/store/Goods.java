@@ -16,8 +16,8 @@ public class Goods {
     private String model;
     private String description;
     private int quantity;
-    private ArrayList<User> managers;
-    private ArrayList<User> stuffs;
+    private ArrayList<User> managers = new ArrayList<>();
+    private ArrayList<User> stuffs = new ArrayList<>();
 
     public String getId() {
         return id;
@@ -53,7 +53,7 @@ public class Goods {
 
     public void addManager(User manager, User operator) {
         if (
-                !this.managers.contains(operator) || !(operator instanceof Manager) || !operator.department.getId().equals("sales")) {
+                !this.managers.contains(operator) && !(operator instanceof Manager) && !operator.department.getId().equals("sales")) {
             System.out.println("You have no permission to add manager");
             return;
         }
@@ -73,7 +73,7 @@ public class Goods {
     }
 
     public void addStuff(User stuff, User operator) {
-        if (!this.managers.contains(operator) || !operator.department.getId().equals("sales")) {
+        if (!this.managers.contains(operator) && !operator.department.getId().equals("sales")) {
             System.out.println("You have no permission to add stuff");
             return;
         }
@@ -145,8 +145,9 @@ public class Goods {
             System.out.println("You have no permission to sale this goods");
             return;
         }
-        this.quantity = this.quantity - quantity;
-        if (this.quantity < 10) {
+        int newQuantity = this.quantity - quantity;
+        this.quantity = newQuantity;
+        if (newQuantity < 10) {
             SupplyRequest request = new SupplyRequest(operator);
             request.setGoods(this);
             request.setQuantity(100);

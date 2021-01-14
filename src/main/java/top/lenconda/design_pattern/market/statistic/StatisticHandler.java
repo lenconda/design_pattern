@@ -10,4 +10,8 @@ public class StatisticHandler {
     public void setStatistic(Statistic statistic) {
         this.statistic = statistic;
     }
+
+    public void printResult() {
+        statistic.getStatistics();
+    }
 }

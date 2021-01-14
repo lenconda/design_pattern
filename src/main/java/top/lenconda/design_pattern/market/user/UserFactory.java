@@ -25,6 +25,9 @@ public class UserFactory {
                 case "sales":
                     user = new SalesStuff(name, username, password, department);
                     break;
+                case "logistics":
+                    user = new LogisticsStuff(name, username, password, department);
+                    break;
                 default:
                     System.out.println("No department matched");
                     break;
@@ -48,6 +51,9 @@ public class UserFactory {
                     break;
                 case "ceo":
                     user = new CEO(name, username, password, department);
+                    break;
+                case "logistics":
+                    user = new LogisticsManager(name, username, password, department);
                     break;
                 default:
                     System.out.println("No role matched");
